@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4 class="form-header">Вход в систему</h4>
+
+<form method="post">
+    {% csrf_token %}
+
+
+    {% for i in form %}
+    {{ i.label }} {{ i }}
+    {{ i.errors }}
+    {% endfor %}
+
+    <button type="submit">Войти</button>
+</form>
+{% if messages %}
+        {% for message in messages %}
+                {{ message }}
+        {% endfor %}
+    </ul>
+{% endif %}
+</body>
+</html>

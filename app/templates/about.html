@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>{{ item.title }}</li>
+        <li>{{ item.content }}</li>
+        <li>{{ item.created }}</li>
+        <li>{{ item.due_date }}</li>
+        <li>{{ item.category }}</li>
+    </ul>
+    <a href={% url 'delete_todo' item.pk %}>
+        <p>Удалить объект</p>
+    </a>
+</body>
+
+</html>

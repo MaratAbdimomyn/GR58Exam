@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main_table">
+<table>
+    <tr>
+        <td>Действие</td>
+        <td class="td2and4">Описание</td>
+        <td>Добавлено</td>
+        <td class="td2and4">Категория</td>
+        <td>Выполнено</td>
+        <td>Удалить</td>
+    </tr>
+    {% for i in items %}
+    <tr>
+        <td>{{ i.title }}</td>
+        <td class="td2and4">{{ i.content }}</td>
+        <td>{{ i.created }}</td>
+        <td class="td2and4">{{ i.category }}</td>
+        {% if i.active == True %}
+        <td><a class="active" href={% url 'update' i.pk %}>Выполнено</a></td>
+        {% else %}
+        <td><a class="not_active" href={% url 'update' i.pk %}>Не выполнено</a></td>
+        {% endif %}
+        <td><a class="delete_item" href={% url 'delete_todo' i.pk %}>Удалить</a></td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+<br>
+<div class="main_table">
+    <a class="create_button" href={% url 'create_todo' %}>Создать действие</a>
+</div>
+{% endblock %}

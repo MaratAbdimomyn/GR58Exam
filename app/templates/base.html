@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href={% static 'css/style.css' %}>
+</head>
+
+<body>
+    <img class="main_cover" src="{% static 'images/99px для проекта.jpg' %}" alt="">
+    
+    <div class="navbar">
+        {% if request.user.is_authenticated %}
+            <p class="navbar_items">Пользователь: {{ request.user.username }}</p>
+            <a class="navbar_items" href={% url 'logout' %}><h3>Выйти</h3></a>
+        {% else %}
+            <a class="navbar_items" href={% url 'login' %}><h3 class="navbar_elements">Войти на сайт</h3></a>
+            <a class="navbar_items" href={% url 'signup' %}><h3 class="navbar_elements">Регистрация</h3></a>
+        {% endif %}
+    </div>
+    
+    <h1 class="navbar_title">Your ToDo List</h1>
+    {% block content %}
+
+    {% endblock %}
+</body>
+
+</html>
